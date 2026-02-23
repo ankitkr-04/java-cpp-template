@@ -1,0 +1,281 @@
+{
+    "CP Fast Input: Standard Int Array": {
+        "scope": "java",
+        "prefix": "inintarr",
+        "body": [
+            "        int[] nextIntArray(int n) {",
+            "            int[] a = new int[n];",
+            "            for (int i = 0; i < n; i++) a[i] = nextInt();",
+            "            return a;",
+            "        }",
+            "        $0"
+        ],
+        "description": "Prefix: inintarr -> Standard space-separated int array"
+    },
+    "CP Fast Input: Standard Long Array": {
+        "scope": "java",
+        "prefix": "inlongarr",
+        "body": [
+            "        long[] nextLongArray(int n) {",
+            "            long[] a = new long[n];",
+            "            for (int i = 0; i < n; i++) a[i] = nextLong();",
+            "            return a;",
+            "        }",
+            "        $0"
+        ],
+        "description": "Prefix: inlongarr -> Standard space-separated long array"
+    },
+    "CP Fast Input: String Array": {
+        "scope": "java",
+        "prefix": "instrarr",
+        "body": [
+            "        String[] nextStringArray(int n) {",
+            "            String[] a = new String[n];",
+            "            for (int i = 0; i < n; i++) a[i] = next();",
+            "            return a;",
+            "        }",
+            "        $0"
+        ],
+        "description": "Prefix: instrarr -> Standard space-separated string array"
+    },
+    "CP Fast Input: Int Matrix": {
+        "scope": "java",
+        "prefix": "inintmat",
+        "body": [
+            "        int[][] nextIntMatrix(int r, int c) {",
+            "            int[][] a = new int[r][c];",
+            "            for (int i = 0; i < r; i++)",
+            "                for (int j = 0; j < c; j++)",
+            "                    a[i][j] = nextInt();",
+            "            return a;",
+            "        }",
+            "        $0"
+        ],
+        "description": "Prefix: inintmat -> Standard space-separated 2D int array"
+    },
+    "CP Fast Input: IntPair Objects": {
+        "scope": "java",
+        "prefix": "inpairclass",
+        "body": [
+            "        IntPair[] nextIntPairs(int n) {",
+            "            IntPair[] p = new IntPair[n];",
+            "            for (int i = 0; i < n; i++) {",
+            "                p[i] = new IntPair(nextInt(), nextInt());",
+            "            }",
+            "            return p;",
+            "        }",
+            "        $0"
+        ],
+        "description": "Prefix: inpairclass -> Reads N pairs directly into IntPair[]"
+    },
+    "CP Fast Input: 2D Points Array": {
+        "scope": "java",
+        "prefix": "inpoints2d",
+        "body": [
+            "        Point[] nextPointArray(int n) {",
+            "            Point[] pts = new Point[n];",
+            "            for (int i = 0; i < n; i++) {",
+            "                pts[i] = new Point(nextDouble(), nextDouble());",
+            "            }",
+            "            return pts;",
+            "        }",
+            "        $0"
+        ],
+        "description": "Prefix: inpoints2d -> Reads N pairs of coordinates directly into Point[]"
+    },
+    "CP Fast Input: 3D Geometry Objects": {
+        "scope": "java",
+        "prefix": "inpoints3d",
+        "body": [
+            "        Point3D[] nextPoint3DArray(int n) {",
+            "            Point3D[] pts = new Point3D[n];",
+            "            String s = readLine();",
+            "            if (s == null) return pts;",
+            "            StringTokenizer tz = new StringTokenizer(s, \" ,[]{}()\\\"'\");",
+            "            for(int i = 0; i < n && tz.hasMoreTokens(); i++) {",
+            "                pts[i] = new Point3D(",
+            "                    Double.parseDouble(tz.nextToken()),",
+            "                    Double.parseDouble(tz.nextToken()),",
+            "                    Double.parseDouble(tz.nextToken())",
+            "                );",
+            "            }",
+            "            return pts;",
+            "        }",
+            "        $0"
+        ],
+        "description": "Prefix: inpoints3d -> Reads messy 3D coords directly into Point3D[]"
+    },
+    "CP Fast Input: Edge List": {
+        "scope": "java",
+        "prefix": "inedges",
+        "body": [
+            "        Edge[] nextEdgeArray(int m) {",
+            "            Edge[] edges = new Edge[m];",
+            "            for (int i = 0; i < m; i++) {",
+            "                edges[i] = new Edge(nextInt() - 1, nextInt() - 1, nextLong());",
+            "            }",
+            "            return edges;",
+            "        }",
+            "        $0"
+        ],
+        "description": "Prefix: inedges -> Reads M edges directly into Edge[] for Kruskal's/Sorting"
+    },
+    "CP Fast Input: Graph (Adjacency List)": {
+        "scope": "java",
+        "prefix": "ingraph",
+        "body": [
+            "        List<Integer>[] nextGraph(int nodes, int edges, boolean directed) {",
+            "            List<Integer>[] adj = new ArrayList[nodes + 1];",
+            "            for (int i = 0; i <= nodes; i++) adj[i] = new ArrayList<>();",
+            "            for (int i = 0; i < edges; i++) {",
+            "                int u = nextInt();",
+            "                int v = nextInt();",
+            "                adj[u].add(v);",
+            "                if (!directed) adj[v].add(u);",
+            "            }",
+            "            return adj;",
+            "        }",
+            "        $0"
+        ],
+        "description": "Prefix: ingraph -> Builds an Adjacency List (1-indexed based)"
+    },
+    "CP Fast Input: Weighted Graph": {
+        "scope": "java",
+        "prefix": "inwgraph",
+        "body": [
+            "        List<int[]>[] nextWeightedGraph(int nodes, int edges, boolean directed) {",
+            "            List<int[]>[] adj = new ArrayList[nodes + 1];",
+            "            for (int i = 0; i <= nodes; i++) adj[i] = new ArrayList<>();",
+            "            for (int i = 0; i < edges; i++) {",
+            "                int u = nextInt();",
+            "                int v = nextInt();",
+            "                int w = nextInt();",
+            "                adj[u].add(new int[]{v, w}); // index 0: dest, index 1: weight",
+            "                if (!directed) adj[v].add(new int[]{u, w});",
+            "            }",
+            "            return adj;",
+            "        }",
+            "        $0"
+        ],
+        "description": "Prefix: inwgraph -> Builds a Weighted Adjacency List (1-indexed)"
+    },
+    "CP Fast Input: Char Array (From String)": {
+        "scope": "java",
+        "prefix": "inchararr",
+        "body": [
+            "        char[] nextCharArray() {",
+            "            return next().toCharArray();",
+            "        }",
+            "        $0"
+        ],
+        "description": "Prefix: inchararr -> Reads next token strictly as char[]"
+    },
+    "CP Fast Input: Comma Separated Strings": {
+        "scope": "java",
+        "prefix": "incommastrs",
+        "body": [
+            "        String[] nextCommaStrings() {",
+            "            String s = readLine();",
+            "            if (s == null) return new String[0];",
+            "            return s.trim().split(\",\");",
+            "        }",
+            "        $0"
+        ],
+        "description": "Prefix: incommastrs -> Reads a line of words separated by commas"
+    },
+    "CP Fast Input: Messy Array": {
+        "scope": "java",
+        "prefix": "indirtyarr",
+        "body": [
+            "        int[] nextDirtyIntArray(int n) {",
+            "            int[] a = new int[n];",
+            "            String s = readLine();",
+            "            if (s == null) return a;",
+            "            StringTokenizer tz = new StringTokenizer(s, \" ,[]{}()\\\"'\");",
+            "            for (int i = 0; i < n && tz.hasMoreTokens(); i++) {",
+            "                a[i] = Integer.parseInt(tz.nextToken());",
+            "            }",
+            "            return a;",
+            "        }",
+            "        $0"
+        ],
+        "description": "Prefix: indirtyarr -> Reads [1, 2, 3] or 1,2,3 into int[]"
+    },
+    "CP Fast Input: EOF Array": {
+        "scope": "java",
+        "prefix": "ineofarr",
+        "body": [
+            "        int[] nextIntArrayEOF() {",
+            "            int[] a = new int[128];",
+            "            int sz = 0;",
+            "            while (hasNext()) {",
+            "                if (sz == a.length) a = Arrays.copyOf(a, sz << 1);",
+            "                a[sz++] = nextInt();",
+            "            }",
+            "            return Arrays.copyOf(a, sz);",
+            "        }",
+            "        $0"
+        ],
+        "description": "Prefix: ineofarr -> Reads a stream of unknown length until EOF"
+    },
+    "CP Fast Input: Single Line Unknown Length": {
+        "scope": "java",
+        "prefix": "inlineints",
+        "body": [
+            "        int[] nextLineIntArray() {",
+            "            String s = readLine();",
+            "            if (s == null || s.trim().isEmpty()) return new int[0];",
+            "            StringTokenizer tz = new StringTokenizer(s.trim());",
+            "            int[] a = new int[tz.countTokens()];",
+            "            for (int i = 0; i < a.length; i++) {",
+            "                a[i] = Integer.parseInt(tz.nextToken());",
+            "            }",
+            "            return a;",
+            "        }",
+            "        $0"
+        ],
+        "description": "Prefix: inlineints -> Reads one line of arbitrary length into an int[]"
+    },
+    "CP Fast Input: Char Grid": {
+        "scope": "java",
+        "prefix": "ingrid",
+        "body": [
+            "        char[][] nextCharGrid(int r, int c) {",
+            "            char[][] g = new char[r][c];",
+            "            for (int i = 0; i < r; i++) {",
+            "                g[i] = next().toCharArray();",
+            "            }",
+            "            return g;",
+            "        }",
+            "        $0"
+        ],
+        "description": "Prefix: ingrid -> Reads an R x C character matrix natively"
+    },
+    "CP Fast Input: Digit String to Array": {
+        "scope": "java",
+        "prefix": "indigits",
+        "body": [
+            "        int[] nextDigitArray() {",
+            "            char[] c = next().toCharArray();",
+            "            int[] a = new int[c.length];",
+            "            for (int i = 0; i < c.length; i++) {",
+            "                a[i] = c[i] - '0';",
+            "            }",
+            "            return a;",
+            "        }",
+            "        $0"
+        ],
+        "description": "Prefix: indigits -> Converts string '12345' into int[]{1,2,3,4,5}"
+    },
+    "CP Fast Input: BigInteger": {
+        "scope": "java",
+        "prefix": "inbigint",
+        "body": [
+            "        java.math.BigInteger nextBigInteger() {",
+            "            return new java.math.BigInteger(next());",
+            "        }",
+            "        $0"
+        ],
+        "description": "Prefix: inbigint -> Safely reads huge numbers exceeding long limits"
+    }
+}

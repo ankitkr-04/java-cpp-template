@@ -1,0 +1,151 @@
+{
+    "CP Fast Output Array": {
+        "scope": "java",
+        "prefix": "outarr",
+        "body": [
+            "        void printArray(int[] a) {",
+            "            for (int i = 0; i < a.length; i++) {",
+            "                pw.print(a[i]);",
+            "                if (i < a.length - 1) pw.print(\" \");",
+            "            }",
+            "            pw.println();",
+            "        }",
+            "        ",
+            "        void printArray(long[] a) {",
+            "            for (int i = 0; i < a.length; i++) {",
+            "                pw.print(a[i]);",
+            "                if (i < a.length - 1) pw.print(\" \");",
+            "            }",
+            "            pw.println();",
+            "        }",
+            "        $0"
+        ],
+        "description": "Prefix: outarr -> Prints an array strictly without trailing spaces"
+    },
+    "CP Fast Output Iterable": {
+        "scope": "java",
+        "prefix": "outlist",
+        "body": [
+            "        void printIterable(Iterable<?> iter) {",
+            "            Iterator<?> it = iter.iterator();",
+            "            while (it.hasNext()) {",
+            "                pw.print(it.next());",
+            "                if (it.hasNext()) pw.print(\" \");",
+            "            }",
+            "            pw.println();",
+            "        }",
+            "        $0"
+        ],
+        "description": "Prefix: outlist -> Prints any List/Set without trailing spaces"
+    },
+    "CP Fast Output Decimal Precision": {
+        "scope": "java",
+        "prefix": "outdec",
+        "body": [
+            "        void printDecimal(double val, int places) {",
+            "            pw.printf(\"%.\" + places + \"f\\n\", val);",
+            "        }",
+            "        $0"
+        ],
+        "description": "Prefix: outdec -> Rounds and prints a double to exact decimal places"
+    },
+    "CP Fast Output Zero Padded": {
+        "scope": "java",
+        "prefix": "outpad",
+        "body": [
+            "        void printPadded(long val, int width) {",
+            "            pw.printf(\"%0\" + width + \"d\\n\", val);",
+            "        }",
+            "        $0"
+        ],
+        "description": "Prefix: outpad -> Prints a number with leading zeros (e.g., width 2: 5 -> 05)"
+    },
+    "CP Fast Output Matrix": {
+        "scope": "java",
+        "prefix": "outmat",
+        "body": [
+            "        void printMatrix(int[][] grid) {",
+            "            for (int[] row : grid) printArray(row);",
+            "        }",
+            "        ",
+            "        void printMatrix(long[][] grid) {",
+            "            for (long[] row : grid) printArray(row);",
+            "        }",
+            "        ",
+            "        void printMatrix(char[][] grid) {",
+            "            for (char[] row : grid) pw.println(new String(row));",
+            "        }",
+            "        $0"
+        ],
+        "description": "Prefix: outmat -> Prints 2D matrices cleanly"
+    },
+    "CP Fast Output Comma Array": {
+        "scope": "java",
+        "prefix": "outcomma",
+        "body": [
+            "        void printCommaArray(int[] a) {",
+            "            for (int i = 0; i < a.length; i++) {",
+            "                pw.print(a[i]);",
+            "                if (i < a.length - 1) pw.print(\",\");",
+            "            }",
+            "            pw.println();",
+            "        }",
+            "        ",
+            "        void printCommaArray(long[] a) {",
+            "            for (int i = 0; i < a.length; i++) {",
+            "                pw.print(a[i]);",
+            "                if (i < a.length - 1) pw.print(\",\");",
+            "            }",
+            "            pw.println();",
+            "        }",
+            "        ",
+            "        void printCommaList(Iterable<?> iter) {",
+            "            Iterator<?> it = iter.iterator();",
+            "            while (it.hasNext()) {",
+            "                pw.print(it.next());",
+            "                if (it.hasNext()) pw.print(\",\");",
+            "            }",
+            "            pw.println();",
+            "        }",
+            "        $0"
+        ],
+        "description": "Prefix: outcomma -> Prints arrays or lists strictly as 1,2,3 (no spaces)"
+    },
+    "CP Fast Output Multi Spaced": {
+        "scope": "java",
+        "prefix": "outmulti",
+        "body": [
+            "        void printSpaced(Object... args) {",
+            "            for (int i = 0; i < args.length; i++) {",
+            "                pw.print(args[i]);",
+            "                if (i < args.length - 1) pw.print(\" \");",
+            "            }",
+            "            pw.println();",
+            "        }",
+            "        $0"
+        ],
+        "description": "Prefix: outmulti -> Prints multiple variables separated by space: out.printSpaced(x, y, z);"
+    },
+    "CP Fast Output Conditionals": {
+        "scope": "java",
+        "prefix": "outcond",
+        "body": [
+            "        void yesNo(boolean b) { pw.println(b ? \"YES\" : \"NO\"); }",
+            "        void possible(boolean b) { pw.println(b ? \"Possible\" : \"Impossible\"); }",
+            "        $0"
+        ],
+        "description": "Prefix: outcond -> Instantly prints standard YES/NO or Possible/Impossible based on a boolean condition"
+    },
+    "CP Fast Output Debugger": {
+        "scope": "java",
+        "prefix": "outdebug",
+        "body": [
+            "        void debug(Object... args) {",
+            "            pw.println(\"DEBUG: \" + Arrays.deepToString(args));",
+            "            pw.flush(); // Force print immediately so it doesn't get stuck in buffer if it crashes",
+            "        }",
+            "        $0"
+        ],
+        "description": "Prefix: outdebug -> Instantly prints deeply nested arrays or variables for debugging"
+    }
+}

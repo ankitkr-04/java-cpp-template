@@ -269,5 +269,18 @@
             "    $0"
         ],
         "description": "Prefix: classtrie -> String matching and prefix counting"
+    },
+    "CP Class: Custom Linked List Node & Reversal": {
+        "scope": "java",
+        "prefix": "classlistnode",
+        "body": [
+            "    static class ListNode {",
+            "        int val;",
+            "        ListNode next;",
+            "        ListNode(int val) { this.val = val; }",
+            "    }",
+            "",
+        ],
+        "description": "Prefix: class listnode -> Standard Linked List Node class and O(N) Iterative Reversal"
     }
 }

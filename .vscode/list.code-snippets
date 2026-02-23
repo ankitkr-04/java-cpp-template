@@ -1,0 +1,38 @@
+{
+    "CP List: Lower Bound (Binary Search)": {
+        "scope": "java",
+        "prefix": "listlowerbound",
+        "body": [
+            "    // Returns the first index where list.get(index) >= key",
+            "    static int lowerBound(List<Integer> list, int key) {",
+            "        int l = 0, r = list.size();",
+            "        while (l < r) {",
+            "            int mid = l + (r - l) / 2;",
+            "            if (list.get(mid) < key) l = mid + 1;",
+            "            else r = mid;",
+            "        }",
+            "        return l;",
+            "    }",
+            "    $0"
+        ],
+        "description": "Prefix: listlowerbound -> O(log N) C++ equivalent of std::lower_bound"
+    },
+    "CP List: Upper Bound (Binary Search)": {
+        "scope": "java",
+        "prefix": "listupperbound",
+        "body": [
+            "    // Returns the first index where list.get(index) > key",
+            "    static int upperBound(List<Integer> list, int key) {",
+            "        int l = 0, r = list.size();",
+            "        while (l < r) {",
+            "            int mid = l + (r - l) / 2;",
+            "            if (list.get(mid) <= key) l = mid + 1;",
+            "            else r = mid;",
+            "        }",
+            "        return l;",
+            "    }",
+            "    $0"
+        ],
+        "description": "Prefix: listupperbound -> O(log N) C++ equivalent of std::upper_bound"
+    },
+}

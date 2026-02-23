@@ -1,0 +1,45 @@
+{
+    "CP List: Custom Linked List Node & Reversal": {
+        "scope": "java",
+        "prefix": "llnode",
+        "body": [
+            "    static ListNode reverseList(ListNode head) {",
+            "        ListNode prev = null, curr = head;",
+            "        while (curr != null) {",
+            "            ListNode nextTemp = curr.next;",
+            "            curr.next = prev;",
+            "            prev = curr;",
+            "            curr = nextTemp;",
+            "        }",
+            "        return prev;",
+            "    }",
+            "    $0"
+        ],
+        "description": "Prefix: llnode -> Standard Linked List Node class and O(N) Iterative Reversal"
+    },
+    "CP List: Cycle Detection (Tortoise and Hare)": {
+        "scope": "java",
+        "prefix": "llcycle",
+        "body": [
+            "    // Requires listnode snippet",
+            "    static ListNode detectCycle(ListNode head) {",
+            "        ListNode slow = head, fast = head;",
+            "        while (fast != null && fast.next != null) {",
+            "            slow = slow.next;",
+            "            fast = fast.next.next;",
+            "            if (slow == fast) {",
+            "                slow = head;",
+            "                while (slow != fast) {",
+            "                    slow = slow.next;",
+            "                    fast = fast.next;",
+            "                }",
+            "                return slow; // Returns the node where the cycle begins",
+            "            }",
+            "        }",
+            "        return null; // No cycle",
+            "    }",
+            "    $0"
+        ],
+        "description": "Prefix: llcycle -> O(N) time, O(1) space cycle detection and entry point locator"
+    }
+}

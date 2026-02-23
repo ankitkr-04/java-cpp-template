@@ -1,0 +1,213 @@
+{
+    "CP Array: Next Permutation (C++ Equivalent)": {
+        "scope": "java",
+        "prefix": "arrnextperm",
+        "body": [
+            "    // Generates the next lexicographical permutation. Returns false if it's the last one.",
+            "    static boolean nextPermutation(int[] a) {",
+            "        int i = a.length - 2;",
+            "        while (i >= 0 && a[i] >= a[i + 1]) i--;",
+            "        if (i < 0) return false;",
+            "        int j = a.length - 1;",
+            "        while (a[j] <= a[i]) j--;",
+            "        int temp = a[i]; a[i] = a[j]; a[j] = temp;",
+            "        for (int l = i + 1, r = a.length - 1; l < r; l++, r--) {",
+            "            temp = a[l]; a[l] = a[r]; a[r] = temp;",
+            "        }",
+            "        return true;",
+            "    }",
+            "    $0"
+        ],
+        "description": "Prefix: arrnextperm -> In-place next permutation in O(N). Essential for brute-forcing small constraints."
+    },
+    "CP Array: Reverse Primitives": {
+        "scope": "java",
+        "prefix": "arrreverse",
+        "body": [
+            "    static void reverse(int[] a) {",
+            "        for (int i = 0, j = a.length - 1; i < j; i++, j--) {",
+            "            int t = a[i]; a[i] = a[j]; a[j] = t;",
+            "        }",
+            "    }",
+            "",
+            "    static void reverse(long[] a) {",
+            "        for (int i = 0, j = a.length - 1; i < j; i++, j--) {",
+            "            long t = a[i]; a[i] = a[j]; a[j] = t;",
+            "        }",
+            "    }",
+            "    $0"
+        ],
+        "description": "Prefix: arrreverse -> O(N) In-place array reversal (avoids Object boxing overhead)"
+    },
+    "CP Array: Coordinate Compression": {
+        "scope": "java",
+        "prefix": "arrcompress",
+        "body": [
+            "    // Maps sparse large numbers (e.g., 10^9) to dense small numbers (0 to N-1).",
+            "    // Crucial for Segment Trees and Fenwick Trees.",
+            "    static int[] compress(int[] a) {",
+            "        int[] sorted = a.clone();",
+            "        Arrays.sort(sorted);",
+            "        int m = 0;",
+            "        for (int i = 0; i < sorted.length; i++) {",
+            "            if (i == 0 || sorted[i] != sorted[i - 1]) sorted[m++] = sorted[i];",
+            "        }",
+            "        int[] res = new int[a.length];",
+            "        for (int i = 0; i < a.length; i++) {",
+            "            res[i] = Arrays.binarySearch(sorted, 0, m, a[i]);",
+            "        }",
+            "        return res;",
+            "    }",
+            "    $0"
+        ],
+        "description": "Prefix: arrcompress -> O(N log N) Coordinate compression for massive array values"
+    },
+    "CP Array: Rotate 2D Grid 90 Degrees": {
+        "scope": "java",
+        "prefix": "arrrotate",
+        "body": [
+            "    static int[][] rotate90(int[][] a) {",
+            "        int n = a.length, m = a[0].length;",
+            "        int[][] res = new int[m][n];",
+            "        for (int i = 0; i < n; i++) {",
+            "            for (int j = 0; j < m; j++) {",
+            "                res[j][n - 1 - i] = a[i][j];",
+            "            }",
+            "        }",
+            "        return res;",
+            "    }",
+            "    $0"
+        ],
+        "description": "Prefix: arrrotate -> Rotates an N x M matrix 90 degrees clockwise instantly"
+    },
+    "CP Array: 1D Prefix & Suffix Sums": {
+        "scope": "java",
+        "prefix": "arrprefix",
+        "body": [
+            "    static long[] buildPrefixSum(int[] a) {",
+            "        long[] pref = new long[a.length + 1];",
+            "        for (int i = 0; i < a.length; i++) pref[i + 1] = pref[i] + a[i];",
+            "        return pref;",
+            "    }",
+            "    ",
+            "    // Query sum from index L to R (0-indexed, inclusive)",
+            "    static long queryPrefix(long[] pref, int l, int r) {",
+            "        return pref[r + 1] - pref[l];",
+            "    }",
+            "    $0"
+        ],
+        "description": "Prefix: arrprefix -> O(N) Prefix sum builder and O(1) range query"
+    },
+    "CP List: Lower Bound (Binary Search)": {
+        "scope": "java",
+        "prefix": "listlowerbound",
+        "body": [
+            "    // Returns the first index where list.get(index) >= key",
+            "    static int lowerBound(List<Integer> list, int key) {",
+            "        int l = 0, r = list.size();",
+            "        while (l < r) {",
+            "            int mid = l + (r - l) / 2;",
+            "            if (list.get(mid) < key) l = mid + 1;",
+            "            else r = mid;",
+            "        }",
+            "        return l;",
+            "    }",
+            "    $0"
+        ],
+        "description": "Prefix: listlowerbound -> O(log N) C++ equivalent of std::lower_bound"
+    },
+    "CP List: Upper Bound (Binary Search)": {
+        "scope": "java",
+        "prefix": "listupperbound",
+        "body": [
+            "    // Returns the first index where list.get(index) > key",
+            "    static int upperBound(List<Integer> list, int key) {",
+            "        int l = 0, r = list.size();",
+            "        while (l < r) {",
+            "            int mid = l + (r - l) / 2;",
+            "            if (list.get(mid) <= key) l = mid + 1;",
+            "            else r = mid;",
+            "        }",
+            "        return l;",
+            "    }",
+            "    $0"
+        ],
+        "description": "Prefix: listupperbound -> O(log N) C++ equivalent of std::upper_bound"
+    },
+    "CP List: Custom Linked List Node & Reversal": {
+        "scope": "java",
+        "prefix": "listnode",
+        "body": [
+            "    static class ListNode {",
+            "        int val;",
+            "        ListNode next;",
+            "        ListNode(int val) { this.val = val; }",
+            "    }",
+            "",
+            "    static ListNode reverseList(ListNode head) {",
+            "        ListNode prev = null, curr = head;",
+            "        while (curr != null) {",
+            "            ListNode nextTemp = curr.next;",
+            "            curr.next = prev;",
+            "            prev = curr;",
+            "            curr = nextTemp;",
+            "        }",
+            "        return prev;",
+            "    }",
+            "    $0"
+        ],
+        "description": "Prefix: listnode -> Standard Linked List Node class and O(N) Iterative Reversal"
+    },
+    "CP Array: Difference Array (Range Addition)": {
+        "scope": "java",
+        "prefix": "arrdiff",
+        "body": [
+            "    static class DifferenceArray {",
+            "        long[] diff;",
+            "        DifferenceArray(int n) {",
+            "            diff = new long[n + 2]; // 1-indexed safety",
+            "        }",
+            "        // Add val to range [l, r] inclusive (0-indexed inputs)",
+            "        void add(int l, int r, long val) {",
+            "            diff[l] += val;",
+            "            diff[r + 1] -= val;",
+            "        }",
+            "        // Reconstructs the final array after all updates",
+            "        long[] getFinalArray(int n) {",
+            "            long[] res = new long[n];",
+            "            long curr = 0;",
+            "            for (int i = 0; i < n; i++) {",
+            "                curr += diff[i];",
+            "                res[i] = curr;",
+            "            }",
+            "            return res;",
+            "        }",
+            "    }",
+            "    $0"
+        ],
+        "description": "Prefix: arrdiff -> O(1) Range Addition Queries. Evaluates in O(N) at the end."
+    },
+    "CP Array: Next Greater Element (Monotonic Stack)": {
+        "scope": "java",
+        "prefix": "arrnge",
+        "body": [
+            "    // Returns an array where res[i] is the INDEX of the next strictly greater element.",
+            "    // If no greater element exists to the right, res[i] = -1.",
+            "    static int[] nextGreaterElement(int[] a) {",
+            "        int n = a.length;",
+            "        int[] res = new int[n];",
+            "        Arrays.fill(res, -1);",
+            "        Deque<Integer> stack = new ArrayDeque<>(); // Stores indices",
+            "        for (int i = 0; i < n; i++) {",
+            "            while (!stack.isEmpty() && a[stack.peek()] < a[i]) {",
+            "                res[stack.pop()] = i;",
+            "            }",
+            "            stack.push(i);",
+            "        }",
+            "        return res;",
+            "    }",
+            "    $0"
+        ],
+        "description": "Prefix: arrnge -> O(N) Finds index of the Next Greater Element using a stack"
+    },
+}

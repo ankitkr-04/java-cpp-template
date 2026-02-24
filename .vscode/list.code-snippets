@@ -35,4 +35,137 @@
         ],
         "description": "Prefix: listupperbound -> O(log N) C++ equivalent of std::upper_bound"
     },
+    "CP List: In-Place Unique (std::unique equivalent)": {
+        "scope": "java",
+        "prefix": "listunique",
+        "body": [
+            "    // Removes consecutive duplicates from a sorted list in O(N) time and O(1) space.",
+            "    // Calling list.remove() in a loop is O(N^2). This avoids that fatal trap.",
+            "    static void unique(List<Integer> list) {",
+            "        if (list.size() <= 1) return;",
+            "        int k = 1;",
+            "        for (int i = 1; i < list.size(); i++) {",
+            "            if (!list.get(i).equals(list.get(i - 1))) {",
+            "                list.set(k++, list.get(i));",
+            "            }",
+            "        }",
+            "        list.subList(k, list.size()).clear();",
+            "    }",
+            "    $0"
+        ],
+        "description": "Prefix: listunique -> O(N) In-place removal of consecutive duplicates (C++ std::unique)"
+    },
+    "CP List: Fast Unboxing (List<Integer> to int[])": {
+        "scope": "java",
+        "prefix": "listtoarray",
+        "body": [
+            "    // list.stream().mapToInt(i->i).toArray() is incredibly slow in CP. ",
+            "    // Always use a manual loop to bypass Stream API overhead.",
+            "    static int[] toIntArray(List<Integer> list) {",
+            "        int[] res = new int[list.size()];",
+            "        for (int i = 0; i < list.size(); i++) {",
+            "            res[i] = list.get(i);",
+            "        }",
+            "        return res;",
+            "    }",
+            "    $0"
+        ],
+        "description": "Prefix: listtoarray -> O(N) Fast primitive array extraction avoiding Java Streams"
+    },
+    "CP List: Predicate Binary Search (First True)": {
+        "scope": "java",
+        "prefix": "listbs_pred",
+        "body": [
+            "    // Finds the first index in the list where the condition is TRUE.",
+            "    // Assumes the boolean array of conditions looks like: F F F T T T",
+            "    static int binarySearchFirstTrue(List<Integer> list, java.util.function.Predicate<Integer> condition) {",
+            "        int l = 0, r = list.size() - 1;",
+            "        int ans = -1;",
+            "        while (l <= r) {",
+            "            int mid = l + (r - l) / 2;",
+            "            if (condition.test(list.get(mid))) {",
+            "                ans = mid;",
+            "                r = mid - 1; // Look for an earlier true",
+            "            } else {",
+            "                l = mid + 1;",
+            "            }",
+            "        }",
+            "        return ans;",
+            "    }",
+            "    $0"
+        ],
+        "description": "Prefix: listbs_pred -> O(log N) Generalized Binary Search finding the first element matching a predicate"
+    },
+    "CP List: Floyd's Cycle Detection (Tortoise & Hare)": {
+        "scope": "java",
+        "prefix": "listcycle",
+        "body": [
+            "    // Requires: classlistnode",
+            "    static ListNode detectCycle(ListNode head) {",
+            "        ListNode slow = head, fast = head;",
+            "        while (fast != null && fast.next != null) {",
+            "            slow = slow.next;",
+            "            fast = fast.next.next;",
+            "            if (slow == fast) {",
+            "                // Cycle detected. Find the starting node of the cycle.",
+            "                ListNode start = head;",
+            "                while (start != slow) {",
+            "                    start = start.next;",
+            "                    slow = slow.next;",
+            "                }",
+            "                return start;",
+            "            }",
+            "        }",
+            "        return null; // No cycle",
+            "    }",
+            "    $0"
+        ],
+        "description": "Prefix: listcycle -> O(N) Finds the exact starting node of a cycle in a Linked List"
+    },
+    "CP List: Merge K Sorted Linked Lists": {
+        "scope": "java",
+        "prefix": "listmergek",
+        "body": [
+            "    // Requires: classlistnode",
+            "    static ListNode mergeKLists(ListNode[] lists) {",
+            "        if (lists == null || lists.length == 0) return null;",
+            "        PriorityQueue<ListNode> pq = new PriorityQueue<>(Comparator.comparingInt(a -> a.val));",
+            "        ",
+            "        for (ListNode node : lists) {",
+            "            if (node != null) pq.add(node);",
+            "        }",
+            "        ",
+            "        ListNode dummy = new ListNode(-1);",
+            "        ListNode tail = dummy;",
+            "        ",
+            "        while (!pq.isEmpty()) {",
+            "            ListNode curr = pq.poll();",
+            "            tail.next = curr;",
+            "            tail = curr;",
+            "            if (curr.next != null) pq.add(curr.next);",
+            "        }",
+            "        return dummy.next;",
+            "    }",
+            "    $0"
+        ],
+        "description": "Prefix: listmergek -> O(N log K) Merges multiple sorted linked lists using a Priority Queue"
+    },
+    "CP List: Find Middle of Linked List": {
+        "scope": "java",
+        "prefix": "listmiddle",
+        "body": [
+            "    // Requires: classlistnode",
+            "    // If even length, returns the second middle node (e.g., 1->2->3->4 returns 3)",
+            "    static ListNode findMiddle(ListNode head) {",
+            "        ListNode slow = head, fast = head;",
+            "        while (fast != null && fast.next != null) {",
+            "            slow = slow.next;",
+            "            fast = fast.next.next;",
+            "        }",
+            "        return slow;",
+            "    }",
+            "    $0"
+        ],
+        "description": "Prefix: listmiddle -> O(N) Finds the middle node of a Linked List efficiently"
+    },
 }

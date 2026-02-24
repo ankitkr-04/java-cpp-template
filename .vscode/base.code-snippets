@@ -60,5 +60,5 @@
             "}"
         ],
         "description": "CodeVita Base with FastScanner and FastWriter (p, pl, printf)"
-    },
+    }
 }

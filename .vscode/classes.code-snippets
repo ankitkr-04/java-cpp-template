@@ -280,7 +280,18 @@
             "        ListNode(int val) { this.val = val; }",
             "    }",
             "",
+            "    static ListNode reverseList(ListNode head) {",
+            "        ListNode prev = null, curr = head;",
+            "        while (curr != null) {",
+            "            ListNode nextTemp = curr.next;",
+            "            curr.next = prev;",
+            "            prev = curr;",
+            "            curr = nextTemp;",
+            "        }",
+            "        return prev;",
+            "    }",
+            "    $0"
         ],
-        "description": "Prefix: class listnode -> Standard Linked List Node class and O(N) Iterative Reversal"
+        "description": "Prefix: classlistnode -> Standard Linked List Node class and O(N) Iterative Reversal"
     }
 }
